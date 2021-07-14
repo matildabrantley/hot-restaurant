@@ -7,6 +7,15 @@ const express = require('express');
 const app = express();
 const PORT = 8080;
 
+// creating reservations array
+const reservations = [{
+    reservationName: 'testRes',
+    name: 'Austin',
+    phone: '8675309',
+    email: 'ausbaxley@gmail'
+    uniqueID: 'bax',
+}],
+
 // Create table reservation
 app.post('/api/reservations', (req, res) => {
     const newReservation = req.body;
