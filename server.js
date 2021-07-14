@@ -1,7 +1,6 @@
 // dependencies
 const express = require('express');
 
-
 // setting up express app
 
 const app = express();
