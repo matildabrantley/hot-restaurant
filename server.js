@@ -1,11 +1,15 @@
+// dependencies
 const express = require('express');
 
+// setting up express app
+
 const app = express();
-const PORT = 3000;
+const PORT = 8080;
 
 app.use(express.json());
 
 // --------- Routes --------- //
+
 app.get('/', (req, res) => res.send('Does this even work tho?'));
 
 app.get('/api/reservations', (req, res) => res.json(characters));
@@ -21,3 +25,16 @@ app.get ('api/reservations/:reservation', (req, res) => {
         }
     }
 });
+
+// Create table reservation
+app.post('/api/reservations', (req, res) => {
+    const newReservation = req.body;
+  
+    reservations.push(newReservation);
+
+    res.json(newReservation);
+
+  });
+
+// server starter
+app.listen(PORT, () => console.log(`App is listening on PORT ${PORT}`));
