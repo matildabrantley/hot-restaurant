@@ -24,19 +24,19 @@
         <div class="form-group">
             <label for="exampleInputName1">Name</label>
             <input type="name" class="form-control" id="exampleInputName1" aria-describedby="emailHelp" placeholder="Enter Name">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <small id="name" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         <!-- Phone Number -->
         <div class="form-group">
             <label for="exampleInputPhoneNumber1">Phone Number</label>
             <input type="phone number" class="form-control" id="exampleInputPhoneNumber1" aria-describedby="emailHelp" placeholder="Enter Phone Number">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <small id="phoneNumber" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         <!-- Email -->
         <div class="form-group">
           <label for="exampleInputEmail1">Email</label>
           <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          <small id="email" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         <!-- Password -->
         <div class="form-group">
@@ -44,8 +44,50 @@
           <input type="uniqueId" class="form-control" id="exampleUniqueId1" placeholder="Unique Id">
         </div>
         <!--  -->
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" id="submit">Submit</button>
       </form>
+    <!-- grab user forms -->
+
+    <script type="text/javascript">
+      
+        const submit = document.getElementById('submit');
+        
+        // Question: What is "e" short for? event 
+        submit.addEventListener('click', (e) => {
+          e.preventDefault();
+          
+          // Question: What does this code do?
+          let charName = document.getElementById('name').value.trim();
+          let charPhoneNumber = document.getElementById('phoneNumber').value.trim();
+          let charEmail = document.getElementById('email').value.trim();
+          let charUniqueId = document.getElementById('uniqueId').value.trim();
+          
+          let newReservation = {
+            name: charName,
+            phoneNumber: parseInt(charPhoneNumber),
+            phoneNumber: charEmail,
+            forcePoints: parseInt(charUniqueId),
+          };
+
+          // Question: What does this code do??
+            fetch('/api/reservations', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newReservation),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('reserve.html', data);
+                alert(`Adding reservation: ${data.name}`);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
     
+        }); 
+
+    </script>
 </body>
 </html>
