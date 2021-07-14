@@ -62,12 +62,30 @@
           let charEmail = document.getElementById('email').value.trim();
           let charUniqueId = document.getElementById('uniqueId').value.trim();
           
-          let newCharacter = {
+          let newReservation = {
             name: charName,
             phoneNumber: parseInt(charPhoneNumber),
             phoneNumber: charEmail,
             forcePoints: parseInt(charUniqueId),
           };
+
+          // Question: What does this code do??
+            fetch('/api/reservations', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newReservation),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('reserve.html', data);
+                alert(`Adding reservation: ${data.name}`);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    
         }); 
 
     </script>
