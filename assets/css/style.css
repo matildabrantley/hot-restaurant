@@ -1,4 +1,18 @@
+h1 {
+    transition-property: color;
+    transition-duration: 2s;
+}
+
+h1:hover {
+    color: red;
+}
+
+button {
+    transition-property: box-shadow;
+    transition-duration: 3s;
+}
+
 button:hover {
-    box-shadow: 2px 2px 2px #000F00;
+    box-shadow: 1px 1px 2px 2px #000F00;
 }
 
