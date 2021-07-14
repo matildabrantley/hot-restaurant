@@ -34,4 +34,18 @@
       </div>
     
 </body>
+
+<script type="text/javascript">
+
+var currentURL = window.location.origin;
+function tableQuery(){
+
+        $.ajax({url: currentURL +"/api/reservations", method: "GET"})
+            .done(function(tableData){
+                console.log(tableData);
+            });
+    }
+
+</script>
+
 </html>
