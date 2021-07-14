@@ -20,7 +20,11 @@ app.use(express.json());
 
 // --------- Routes --------- //
 
-app.get('/', (req, res) => res.send('Does this even work tho?'));
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'home.html')));
+
+app.get('/add', (req, res) => res.sendFile(path.join(__dirname, 'tables.html')));
+
+app.get('/reserve', (req, res) => res.sendFile(path.join(__dirname, 'reserve.html')));
 
 app.get('/api/reservations', (req, res) => res.json(reservations));
 
