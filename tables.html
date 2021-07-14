@@ -41,7 +41,9 @@ var currentURL = window.location.origin;
 function tableQuery(){
 
         $.ajax({url: currentURL +"/api/reservations", method: "GET"})
-            .done(function)
+            .done(function(tableData){
+                console.log(tableData);
+            });
     }
 
 </script>
