@@ -36,22 +36,12 @@
 </body>
 
 <script type="text/javascript">
-    function tableQuery(){
-        var currentURL = window.location.origin;
 
-        $.ajax({url: currentURL + "/api/reservations", method: "GET"})
-            .done(function(tableData) {
-                for (var i=0; i < tableData.length; i++) {
-                    var tableSection = $("<div>");
-					tableSection.addClass('well');
-					tableSection.attr('id', 'tableWell-' + i+1)
-					$('#tableSection').append(tableSection);
+var currentURL = window.location.origin;
+function tableQuery(){
 
-					var tableNumber = i + 1;
-
-                    $("#tableWell-"+ i+1).append('<h2><span class="label label-primary">' + tableNumber + "</span> | " + tableData[i].customerID + "</h2>")
-                }
-            })
+        $.ajax({url: currentURL +"/api/reservations", method: "GET"})
+            .done(function)
     }
 
 </script>
